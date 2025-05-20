@@ -1,0 +1,9 @@
+services:
+  flask-app:
+    build:
+      context: .
+    volumes:
+      - ./instance:/instance
+    ports:
+      - "80:80"
+    restart: unless-stopped

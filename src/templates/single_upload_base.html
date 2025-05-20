@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Upload{% endblock %} {% block
+content%}
+
+<div class="login-form-container">
+  <h1>Upload your File to proceed</h1>
+  <form action="{{next}}" method="post">
+    <div class="form-group">
+      <div class="custom-file-upload">
+        <img
+          src="{{ url_for('static',filename='upload-white.svg') }}"
+          width="100"
+        />
+        <input type="file" class="form-control" id="file" name="file" />
+      </div>
+    </div>
+    <div class="center-div-content">
+      <button type="submit" class="btn btn-primary">Upload</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
