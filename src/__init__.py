@@ -6,14 +6,23 @@ import random
 import os
 
 # Create and configure the logger
+log_file_path = os.path.join("..", "instance", "service.log")
+os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
+
+# Set up the root logger
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    handlers=[
+        logging.FileHandler(log_file_path),
+        logging.StreamHandler(),  # Optional: To also log to the console
+    ],
+)
+
 logger = logging.getLogger("LOGGER")
-logger.setLevel(logging.DEBUG)
-os.makedirs("../instance", exist_ok=True)
-fh = logging.FileHandler("../instance/service.log")
-fh.setLevel(logging.DEBUG)
-formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-fh.setFormatter(formatter)
-logger.addHandler(fh)
+
+# Log something in the main app
+logger.info("Logger initialized!")
 
 # Create the db
 db = SQLAlchemy()
