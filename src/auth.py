@@ -8,7 +8,7 @@ from . import db
 
 
 auth = Blueprint('auth', __name__)
-logger = getLogger("LOGGER")
+logger = getLogger(__name__)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
